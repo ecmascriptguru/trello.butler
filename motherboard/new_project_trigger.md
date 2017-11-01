@@ -13,4 +13,4 @@ and create a new list named "To Do" on board "{cardname}" at the top,
 and create a new list named "Backlog" on board "{cardname}" at the top
 ```
 
->> This will create a new board with name of the card created by admin, and create lists **Backlog**, **To Do**, **In Progress**, **Ready for Department Review**, **Ready for Project Review** and **Done**
+> This will create a new board with name of the card created by admin, and create lists **Backlog**, **To Do**, **In Progress**, **Ready for Department Review**, **Ready for Project Review** and **Done**
