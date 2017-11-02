@@ -46,3 +46,8 @@ when a card with label is moved into list "Backlog",
 find a card named "{cardname}" on board "{labelname}",
 and move the card to list "Incoming" on board "{labelname}"
 ```
+
+## Action for comments in project board.
+```
+when a comment is posted to a card with label, find a card named "{cardname}" on board named "{labelname}", and post comment "{commenttext}\n by @{username}"
+```
