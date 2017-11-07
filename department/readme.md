@@ -46,3 +46,42 @@ and for each card named "{cardname}" on board named "project__{labelname}",
 if {labelnames} contains "{wildcard1}", 
 post comment "{commenttext}\n by @{username}"
 ```
+
+## Due date manipulation
+### When a due date is added to or removed from a card
+- Adding to a card
+```
+when a due date is added to a card with label, 
+match "{boardname}" with "dpt__{*}", 
+and for each card named "{cardname}" on board named "project__{labelname}", 
+if {labelnames} contains "{wildcard1}", 
+set due on the date in the card
+```
+
+- Removing from a card
+```
+when a due date is removed from a card with label, 
+match "{boardname}" with "dpt__{*}", 
+for each card named "{cardname}" on board named "project__{labelname}", 
+if {labelnames} contains "{wildcard1}", 
+remove the due date from the card
+```
+
+### When a due date is marked as complete/incomplete in a card
+- Marking as **complete**
+```
+when the due date is marked as complete in a card with label, 
+match "{boardname}" with "dpt__{*}", 
+for each card named "{cardname}" on board named "project__{labelname}", 
+if {labelnames} contains "{wildcard1}", 
+mark the due date as complete
+```
+
+- Marking as **incomplete**
+```
+when the due date is marked as incomplete in a card with label, 
+match "{boardname}" with "dpt__{*}", 
+for each card named "{cardname}" on board named "project__{labelname}", 
+if {labelnames} contains "{wildcard1}", 
+mark the due date as incomplete
+```
