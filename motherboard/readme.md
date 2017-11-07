@@ -4,7 +4,7 @@
 
 ```
 when a card is added to list "Projects" by anyone, 
-create a new board named "{cardname}" in team "Jing Dong", 
+create a new board named "{cardname}" in team "LeanRank", 
 and create a new list named "Done" on board "{cardname}" at the top, 
 and create a new list named "Ready for Project Review" on board "{cardname}" at the top, 
 and create a new list named "Ready for Department Review" on board "{cardname}" at the top, 
@@ -17,6 +17,13 @@ and create a new list named "Backlog" on board "{cardname}" at the top
 
 ## Or we can easily copy a template board to a new project board. Then we need to have a template board. i.e named with **project_template** and need to copy the board with a name. Let me show you how to do this.
 ```
-when a card is added to list "Projects" by anyone, 
-copy board "project_template" to team "Jing Dong" with name "{cardname}"
+when a card is added to list "Projects", 
+copy board "template_project" to team "LeanRank" with name "project_{cardname}", 
+and add link "{copyboardlink}" in the trigger card
+```
+
+```
+when a card is added to list "Departments", 
+copy board "template_dpt" to team "LeanRank" with name "dpt_{cardname}" ,
+and add link "{copyboardlink}" in the trigger card
 ```
