@@ -9,9 +9,9 @@ In contrary, removing label should work in the department board as well.
 when a label is added to a card in list "Backlog", 
 match "{boardname}" with "project__{*}", 
 and create a card with title "{cardname}" in list "Incoming" on the board named "dpt__{labelname}", 
-and add link "{triggercardlink}", 
 and copy all the members and the description and all the checklists and the due date from the trigger card, 
-and add "{wildcard1}" label to the card
+and add "{wildcard1}" label to the card, 
+and link the cards together in the attachments
 ```
 
 > Intereted a bit.
@@ -22,7 +22,8 @@ when a label is added to a card in list "Backlog", copy the card to list "Incomi
 ## Removing a label/department from a card
 ```
 when a label is removed from a card in "Backlog" list, 
-match "{boardname}" with "project__{*}", 
+remove attachment "{*}", 
+and match "{boardname}" with "project__{*}", 
 and for each card named "{cardname}" in list "Incoming" on the board named "dpt__{labelname}", 
 and if {labelnames} contains "{wildcard1}", 
 archive the card
@@ -121,4 +122,62 @@ match "{boardname}" with "project__{*}",
 for each card named "{cardname}" on board named "dpt__{labelname}", 
 if {labelnames} contains "{wildcard1}", 
 mark the due date as incomplete
+```
+
+## Managing Checklist
+### Adding/Removing Checklist
+- Adding a check list
+```
+when a checklist is added to a card with label, 
+match "{boardname}" with "project__{*}", 
+and for each card on board named "dpt__{labelname}", 
+if {labelnames} contains "{wildcard1}", 
+copy the checklist "{checklistname}" from the trigger card
+```
+
+- Removing a check list from a card
+```
+when a checklist is removed from a card with label, 
+match "{boardname}" with "project__{*}", 
+for each card "{cardname}" on board named "dpt__{labelname}", 
+if {labelnames} contains "{wildcard1}", 
+remove the "{checklistname}" checklist from the card
+```
+
+### Adding/Removing Checklist item
+- Adding a checklist item
+```
+when a checklist item is added to a checklist in a card with label, 
+match "{boardname}" with "project__{*}", 
+and for each card "{cardname}" on board named "dpt__{labelname}", 
+if {labelnames} contains "{wildcard1}", 
+add unique item "{checklistitemname}" to checklist "{checklistname}" on the card
+```
+
+- Removing a checklist item from a check list
+```
+when a checklist item is removed from a checklist in a card with label, 
+match "{boardname}" with "project__{*}", 
+for each card "{cardname}" on board named "dpt__{labelname}", 
+if {labelnames} contains "{wildcard1}", 
+remove the "{checklistitemname}" item from checklist "{checklistname}"
+```
+
+### Checking / Unchecking checklist item
+- Checking check list items
+```
+when a checklist item is checked in a checklist in a card with label, 
+match "{boardname}" with "project__{*}", 
+and for each card "{cardname}" on board named "dpt__{labelname}", 
+if {labelnames} contains "{wildcard1}", 
+check item "{checklistitemname}" in checklist "{checklistname}"
+```
+
+- Unchecking check list items
+```
+when a checklist item is unchecked in a checklist in a card with label, 
+match "{boardname}" with "project__{*}", 
+and for each card "{cardname}" on board named "dpt__{labelname}", 
+if {labelnames} contains "{wildcard1}", 
+uncheck item "{checklistitemname}" in checklist "{checklistname}"
 ```
