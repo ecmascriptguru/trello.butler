@@ -3,45 +3,45 @@ This is one of Content boards
 
 ## Archiving synchronization
 ```
-when a card with label containing "Website: {*}" is archived, for each card linked in the attachments, archive the card
+when a card with label is archived, for each card linked in the attachments, archive the card
 ```
 
 ### Checklist synchronization
 #### When a checklist added/removed
 ```
-when a checklist is added to a card with label containing "Website: {*}", 
+when a checklist is added to a card with label, 
 for each card linked in the attachments, 
 copy the checklist "{checklistname}" from the trigger card
 ```
 
 ```
-when a checklist is removed from a card with label containing "Website: {*}", 
+when a checklist is removed from a card with label, 
 for each card linked in the attachments, 
 remove the checklist "{checklistname}" from the card
 ```
 
 #### When a checklist item added/removed
 ```
-when a checklist item is added to a checklist in a card with label containing "Website: {*}", 
+when a checklist item is added to a checklist in a card with label, 
 for each card linked in the attachments,
 add unique item "{checklistitemname}" to checklist "{checklistname}" on the card
 ```
 
 ```
-when a checklist item is removed from a checklist in a card with label containing "Website: {*}", 
+when a checklist item is removed from a checklist in a card with label, 
 for each card linked in the attachments,
 remove item "{checklistitemname}" from checklist "{checklistname}"
 ```
 
 #### When a checklist item was marked as complete/incomplete
 ```
-when a checklist item is checked in a checklist in a card with label containing "Website: {*}", 
+when a checklist item is checked in a checklist in a card with label, 
 for each card linked in the attachments, 
 check item "{checklistitemname}" in checklist "{checklistname}"
 ```
 
 ```
-when a checklist item is unchecked in a checklist in a card with label containing "Website: {*}", 
+when a checklist item is unchecked in a checklist in a card with label, 
 for each card linked in the attachments, 
 uncheck item "{checklistitemname}" in checklist "{checklistname}"
 ```
@@ -52,26 +52,26 @@ uncheck item "{checklistitemname}" in checklist "{checklistname}"
 ## Due Date Synchronization
 ### Due date add/remove
 ```
-when a due date is added to a card with label containing "Website: {*}", 
+when a due date is added to a card with label, 
 for each card linked in the attachments, 
 set due on the date in the card
 ```
 
 ```
-when a due date is removed from a card with label containing "Website: {*}", 
+when a due date is removed from a card with label, 
 for each card linked in the attachments, 
 remove the due date from the card
 ```
 
 ### Set due date as complete/incomplete
 ```
-when the due date is marked as complete in a card with label containing "Website: {*}", 
+when the due date is marked as complete in a card with label, 
 for each card linked in the attachments, 
 mark the due date as complete
 ```
 
 ```
-when the due date is marked as incomplete in a card with label containing "Website: {*}", 
+when the due date is marked as incomplete in a card with label, 
 for each card linked in the attachments, 
 mark the due date as incomplete
 ```
@@ -79,14 +79,14 @@ mark the due date as incomplete
 ## Member synchronizations
 ### Adding member
 ```
-when someone is added to a card with label containing "Website: {*}", 
+when someone is added to a card with label, 
 for each card linked in the attachments, 
 add member @{matchedusername} to the card
 ```
 
 ### Removing member
 ```
-when someone is removed from a card with label containing "Website: {*}", 
+when someone is removed from a card with label, 
 for each card linked in the attachments, 
 remove member @{matchedusername} from the card
 ```
