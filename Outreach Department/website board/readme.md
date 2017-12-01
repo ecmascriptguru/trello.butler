@@ -31,9 +31,9 @@
 
 ## Butler commands by specification
 ### Card duplication
-When a card with _infographic_ label moved to `Todo` list, the card should be duplicated in `Incoming` list on **Outreach** board and **Infographic Production** board. 
+#### When a card with _infographic_ label moved to `Todo` list, the card should be duplicated in `Incoming` list on **Outreach** board and **Infographic Production** board. 
 
-We suppose that website board was already named with a specific pattern like __Website Demo Board: `Betfy`__. Here `Betfy` is website name and it should be added as a label on outreach board, and `Website: Betfy` label will be added to the duplicated card on **Infographic Production** Board
+We suppose that website board was already named with a specific pattern like __Website Demo Board: `Betfy`__. Here `Betfy` is website name and it should be added as a label on outreach board, and `Website: Betfy` label will be added to the duplicated card on **Infographic Production** Board. That's how a card will have 2 card links connected each other.
 ```
 when a card with "infographic" label is moved into list "Todo", 
 match "{boardname}" with "Website Demo Board: {*}", 
@@ -48,4 +48,38 @@ and link the cards together in the attachments,
 and for each card named "{cardname}" in list "Incoming" on the board named "Outreach Board", 
 if {labelnames} contains "{wildcard1}", 
 add link "{newcardlink}" join the card
+```
+
+### Checklist synchronization
+### When a checklist added/removed
+```
+when a checklist is added to a card with "infographic" label, 
+and for each card linked in the attachments, 
+copy the checklist "{checklistname}" from the trigger card
+```
+
+```
+when a checklist is removed from a card with "infographic" label, 
+for each card linked in the attachments, 
+remove the checklist "{checklistname}" from the card
+```
+
+### When a checklist item added/removed
+```
+when a checklist item is added to a checklist in a card with "infographic" label, 
+for each card linked in the attachments,
+add unique item "{checklistitemname}" to checklist "{checklistname}" on the card
+```
+
+```
+when a checklist item is removed from a checklist in a card with "infographic" label, 
+for each card linked in the attachments,
+remove item "{checklistitemname}" from checklist "{checklistname}" on the card
+```
+
+### When a checklist item was marked as complete/incomplete
+```
+when a checklist item is checked in a checklist in a card with label "infographic", 
+for each card linked in the attachments, 
+check item "{checklistitemname}" in checklist "{checklistname}"
 ```
