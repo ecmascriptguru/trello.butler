@@ -42,7 +42,7 @@ We suppose that website board was already named with a specific pattern like __W
 ```
 when a card with "campaign" label is moved into list "Sprint Planning", 
 match "{boardname}" with "Website: {*}", 
-and create a card with title "{cardname}" in list "Incoming" on the board named "Outreach Board", 
+and create a card with title "{cardname}" in list "Incoming" on the board named "Outreach", 
 and copy all the members, and all the attachments and the description and all the checklists and the due date from the trigger card, 
 and add "{wildcard1}" label to the card, 
 and link the cards together in the attachments, 
@@ -50,7 +50,7 @@ and create a card with title "{cardname}" in list "Incoming" on the board named 
 and copy all the members and all the attachments and the description and all the checklists and the due date from the trigger card, 
 and add "Website: {wildcard1}" label to the card,
 and link the cards together in the attachments,
-and for each card named "{cardname}" in list "Incoming" on the board named "Outreach Board", 
+and for each card named "{cardname}" in list "Incoming" on the board named "Outreach", 
 if {labelnames} contains "{wildcard1}", 
 add link "{newcardlink}" join the card
 ```
@@ -139,4 +139,19 @@ Every comment posted on this website board should be duplicated in other corresp
 when a comment is posted to a card with "campaign" label, 
 for each card linked in the attachments, 
 post comment "{commenttext}\n by @{username}"
+```
+
+## Member synchronizations
+### Adding member
+```
+when someone is added to a card with "campaign" label, 
+for each card linked in the attachments, 
+add member @{matchedusername} to the card
+```
+
+### Removing member
+```
+when someone is removed from a card with "campaign" label, 
+for each card linked in the attachments, 
+remove member @{matchedusername} from the card
 ```
