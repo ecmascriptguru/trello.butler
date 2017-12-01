@@ -51,7 +51,7 @@ add link "{newcardlink}" join the card
 ```
 
 ### Checklist synchronization
-### When a checklist added/removed
+#### When a checklist added/removed
 ```
 when a checklist is added to a card with "infographic" label, 
 and for each card linked in the attachments, 
@@ -64,7 +64,7 @@ for each card linked in the attachments,
 remove the checklist "{checklistname}" from the card
 ```
 
-### When a checklist item added/removed
+#### When a checklist item added/removed
 ```
 when a checklist item is added to a checklist in a card with "infographic" label, 
 for each card linked in the attachments,
@@ -77,9 +77,54 @@ for each card linked in the attachments,
 remove item "{checklistitemname}" from checklist "{checklistname}" on the card
 ```
 
-### When a checklist item was marked as complete/incomplete
+#### When a checklist item was marked as complete/incomplete
 ```
 when a checklist item is checked in a checklist in a card with label "infographic", 
 for each card linked in the attachments, 
 check item "{checklistitemname}" in checklist "{checklistname}"
+```
+
+```
+when a checklist item is unchecked in a checklist in a card with label "infographic", 
+for each card linked in the attachments, 
+uncheck item "{checklistitemname}" in checklist "{checklistname}"
+```
+
+**Please note that there is no feature to synchronize changes in checklist and checklist item names. Once a change was made in a checklist or checklist item, that won't be synchronized no longer.**
+
+
+## Due Date Synchronization
+### Due date add/remove
+```
+when a due date is added to a card with "infographic" label, 
+for each card linked in the attachments, 
+set due on the date in the card
+```
+
+```
+when a due date is removed from a card with "infographic" label, 
+for each card linked in the attachments, 
+remove the due date from the card
+```
+
+### Set due date as complete/incomplete
+```
+when the due date is marked as complete in a card with "infographic" label, 
+for each card linked in the attachments, 
+mark the due date as complete
+```
+
+```
+when the due date is marked as incomplete in a card with "infographic" label, 
+for each card linked in the attachments, 
+mark the due date as incomplete
+```
+
+## Comments Synchronization
+Every comment posted on this website board should be duplicated in other corresponding boards like **Outreach** board and **Infographic Production Board**
+
+```
+when a comment is posted to a card with "infographic" label, 
+for each card linked in the attachments, 
+post comment "{commenttext}\n by @{username}"
 ```
