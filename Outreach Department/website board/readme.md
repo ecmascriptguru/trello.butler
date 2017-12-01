@@ -1,13 +1,18 @@
 # Website layer board.
 
 ## Lists on this board
+### Legend
+> To give
+
 ### Backlog
-> There are different types of work here. Notice the infographic label, it doesn't go to the content board until moved into "Todo". The work types are "wordpress", "issue" and "infographic".
+> There are different types of work here. Notice the campaign label, it doesn't go to the content board until moved into "Sprint Planning". The work types are "wordpress", "issue" and "campaign".
 
-### Todo
-> In this stage the infographic goes to the content board and waits in the incoming list. When it is started in the content department it moves to in progress on this website board.
+### Sprint Planning
+> In this stage the campaign goes to the content board and waits in the incoming list. When it is started in the content department it moves to in progress on this website board.
 
-### Doing
+### Current Sprint
+
+### In Progress
 > In this list, we will have all cards that are in progress in other boards like content board and outreach board. In order to show the status we will use labels. So the label names will be like "{board_name} : {status}". So this feature will be implemented in other boards like department board(outreach board) and sub process board.
 
 ### Done
@@ -26,22 +31,22 @@
 
 > `content: in progress`
 
-> `outreach: done`
+> `content: done`
 
 
 ## Butler commands by specification
 ### Card duplication
-#### When a card with _infographic_ label moved to `Todo` list, the card should be duplicated in `Incoming` list on **Outreach** board and **Infographic Production** board. 
+#### When a card with _campaign_ label moved to `Sprint Planning` list, the card should be duplicated in `Incoming` list on **Outreach** board and **Infographic Production** board. 
 
-We suppose that website board was already named with a specific pattern like __Website Demo Board: `Betfy`__. Here `Betfy` is website name and it should be added as a label on outreach board, and `Website: Betfy` label will be added to the duplicated card on **Infographic Production** Board. That's how a card will have 2 card links connected each other.
+We suppose that website board was already named with a specific pattern like __Website: `Betfy`__. Here `Betfy` is website name and it should be added as a label on outreach board, and `Website: Betfy` label will be added to the duplicated card on **Infographic Production** Board. That's how a card will have 2 card links connected each other.
 ```
-when a card with "infographic" label is moved into list "Todo", 
-match "{boardname}" with "Website Demo Board: {*}", 
+when a card with "campaign" label is moved into list "Sprint Planning", 
+match "{boardname}" with "Website: {*}", 
 and create a card with title "{cardname}" in list "Incoming" on the board named "Outreach Board", 
 and copy all the members, and all the attachments and the description and all the checklists and the due date from the trigger card, 
 and add "{wildcard1}" label to the card, 
 and link the cards together in the attachments, 
-and create a card with title "{cardname}" in list "Incoming" on the board named "Infographic Production Board", 
+and create a card with title "{cardname}" in list "Incoming" on the board named "Infographic Production", 
 and copy all the members and all the attachments and the description and all the checklists and the due date from the trigger card, 
 and add "Website: {wildcard1}" label to the card,
 and link the cards together in the attachments,
@@ -50,42 +55,49 @@ if {labelnames} contains "{wildcard1}",
 add link "{newcardlink}" join the card
 ```
 
+## When a card is archived
+```
+when a card with "campaign" label is archived,
+for each card linked in the attachments,
+archive the card
+```
+
 ### Checklist synchronization
 #### When a checklist added/removed
 ```
-when a checklist is added to a card with "infographic" label, 
-and for each card linked in the attachments, 
+when a checklist is added to a card with "campaign" label, 
+for each card linked in the attachments, 
 copy the checklist "{checklistname}" from the trigger card
 ```
 
 ```
-when a checklist is removed from a card with "infographic" label, 
+when a checklist is removed from a card with "campaign" label, 
 for each card linked in the attachments, 
 remove the checklist "{checklistname}" from the card
 ```
 
 #### When a checklist item added/removed
 ```
-when a checklist item is added to a checklist in a card with "infographic" label, 
+when a checklist item is added to a checklist in a card with "campaign" label, 
 for each card linked in the attachments,
 add unique item "{checklistitemname}" to checklist "{checklistname}" on the card
 ```
 
 ```
-when a checklist item is removed from a checklist in a card with "infographic" label, 
+when a checklist item is removed from a checklist in a card with "campaign" label, 
 for each card linked in the attachments,
-remove item "{checklistitemname}" from checklist "{checklistname}" on the card
+remove item "{checklistitemname}" from checklist "{checklistname}"
 ```
 
 #### When a checklist item was marked as complete/incomplete
 ```
-when a checklist item is checked in a checklist in a card with label "infographic", 
+when a checklist item is checked in a checklist in a card with label "campaign", 
 for each card linked in the attachments, 
 check item "{checklistitemname}" in checklist "{checklistname}"
 ```
 
 ```
-when a checklist item is unchecked in a checklist in a card with label "infographic", 
+when a checklist item is unchecked in a checklist in a card with label "campaign", 
 for each card linked in the attachments, 
 uncheck item "{checklistitemname}" in checklist "{checklistname}"
 ```
@@ -96,35 +108,35 @@ uncheck item "{checklistitemname}" in checklist "{checklistname}"
 ## Due Date Synchronization
 ### Due date add/remove
 ```
-when a due date is added to a card with "infographic" label, 
+when a due date is added to a card with "campaign" label, 
 for each card linked in the attachments, 
 set due on the date in the card
 ```
 
 ```
-when a due date is removed from a card with "infographic" label, 
+when a due date is removed from a card with "campaign" label, 
 for each card linked in the attachments, 
 remove the due date from the card
 ```
 
 ### Set due date as complete/incomplete
 ```
-when the due date is marked as complete in a card with "infographic" label, 
+when the due date is marked as complete in a card with "campaign" label, 
 for each card linked in the attachments, 
 mark the due date as complete
 ```
 
 ```
-when the due date is marked as incomplete in a card with "infographic" label, 
+when the due date is marked as incomplete in a card with "campaign" label, 
 for each card linked in the attachments, 
 mark the due date as incomplete
 ```
 
 ## Comments Synchronization
-Every comment posted on this website board should be duplicated in other corresponding boards like **Outreach** board and **Infographic Production Board**
+Every comment posted on this website board should be duplicated in other corresponding boards like **Outreach** board and **Infographic Production**
 
 ```
-when a comment is posted to a card with "infographic" label, 
+when a comment is posted to a card with "campaign" label, 
 for each card linked in the attachments, 
 post comment "{commenttext}\n by @{username}"
 ```
