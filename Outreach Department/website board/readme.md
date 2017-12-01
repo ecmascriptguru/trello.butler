@@ -12,11 +12,28 @@
     In this list, we will have all cards that are in progress in other boards like content board and outreach board. In order to show the status we will use labels. So the label names will be like "{board_name} : {status}". So this feature will be implemented in other boards like department board(outreach board) and sub process board.
 
 ### Done
-
+    When a content and outreach is done it is moved to the done category.
 
 ## Labels
-### Work Types
-`is this`
+### Status on outreach board
+    outreach: todo
+    outreach: in progress
+    outreach: done
+
+### Status on content board
+    content: todo
+    content: in progress
+    outreach: done
+
+## Butler commands by specification
 ```
-when a card with "infographic" label is moved into list "Todo", match "{boardname}" with "Website Demo Board: {*}", and create a card with title "{cardname}" in list "Incoming" on the board named "Outreach Board", and copy all the members, and all the attachments and the description and all the checklists and the due date from the trigger card, and add "{wildcard1}" label to the card, and link the cards together in the attachments, and create a card with title "{cardname}" in list "Incoming" on the board named "Infographic Production Board", and copy all the members and all the attachments and the description and all the checklists and the due date from the trigger card, and link the cards together in the attachments
+when a card with "infographic" label is moved into list "Todo", 
+match "{boardname}" with "Website Demo Board: {*}", 
+and create a card with title "{cardname}" in list "Incoming" on the board named "Outreach Board", 
+and copy all the members, and all the attachments and the description and all the checklists and the due date from the trigger card, 
+and add "{wildcard1}" label to the card, 
+and link the cards together in the attachments, 
+and create a card with title "{cardname}" in list "Incoming" on the board named "Infographic Production Board", 
+and copy all the members and all the attachments and the description and all the checklists and the due date from the trigger card, 
+and link the cards together in the attachments
 ```
