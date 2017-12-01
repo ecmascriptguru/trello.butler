@@ -55,6 +55,16 @@ if {labelnames} contains "{wildcard1}",
 add link "{newcardlink}" join the card
 ```
 
+In this case, we just duplicate the moved card on the outreach board, because it should be duplicated on differetn boards according to content. Especially it can be duplicated on Infographic Outreach board or Content Outreach board. So it will be managed on outreach board
+```
+when a card with "campaign" label is moved into list "Sprint Planning",
+match "{boardname}" with "Website: {*}",
+and create a card with title "{cardname}" in list "Incoming" on the board "Outreach",
+and copy all the members and all the attachments and the description and all the checklists and all the members and the due date from the trigger card,
+and add "{wildcard1}" label to the card,
+and link the cards together in the attachments
+```
+
 ## When a card is archived
 ```
 when a card with "campaign" label is archived,
