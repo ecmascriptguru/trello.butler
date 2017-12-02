@@ -1,6 +1,50 @@
 # Infographic Outreach Board
 This is one of Content boards
 
+## Card movements
+### Moving cards to list "Planning"
+```
+when a card is moved into list "Planning", 
+for each card linked in the attachments, 
+if {labelnames} contains "Campaign", 
+remove "content : in progress" label from the card, 
+and remove "content : done" label from the card, 
+and add "content : todo" label
+```
+
+### Moving cards to list "Production", "Fixes Needed" and "Need Approval"
+```
+when a card is moved into list "Fixes needed" or "Design in progress" or "Needs approval" or "Data+Design", 
+for each card linked in the attachments, 
+if {labelnames} contains "Campaign", 
+remove "content : todo" label from the card, 
+and remove "content : done" label from the card, 
+and add "content : in progress" label
+```
+
+### Moving cards to list "Done"
+```
+when a card is moved into list "Done", 
+for each card linked in the attachments, 
+if {labelnames} contains "Campaign", 
+remove "content : todo" label from the card, 
+and remove "content : in progress" label from the card, 
+and add "content : done" label
+```
+
+### When a "NEEDS FIX" label added to a card.
+```
+when "NEEDS FIX" label is added to a card, 
+move the card to the bottom of list "Fixes needed", 
+and for each card linked in the attachments, 
+if "{labelnames}" contains "Campaign", 
+and remove "content : todo" label from the card, 
+and remove "content : done" label from the card, 
+and add "content : in progress" label
+``` 
+
+
+
 ## Archiving synchronization
 ```
 when a card with label is archived, for each card linked in the attachments, archive the card
