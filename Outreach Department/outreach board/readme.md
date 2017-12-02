@@ -26,7 +26,11 @@ and add "Website: {labelname}" label,
 and link the cards together in the attachments, 
 and for each card named "{cardname}" on the board named "Website: {labelname}", 
 if {labelnames} contains "campaign", 
-add link "{newcardlink}"
+add link "{newcardlink}", 
+and find a card named "{cardname}" on the board named "Website: {labelname}", 
+and remove "outreach : todo" from the card, 
+and remove "outreach : done" label from the card, 
+and add "outreach : in progress" label
 ```
 
 ## Archiving synchronization
@@ -117,4 +121,38 @@ add member @{matchedusername} to the card
 when someone is removed from a card with label, 
 for each card linked in the attachments, 
 remove member @{matchedusername} from the card
+```
+
+## Card Movements
+### Moving to **Todo** list
+```
+when a card with label is moved into "Todo" list, 
+find a card named "{cardname}" on the board named "Website: {labelname}", 
+and remove "outreach : in progress" label from the card, 
+and remove "outreach : done" label from the card, 
+and add "outreach : todo" label
+```
+
+### Moving to **Content Outreach** list
+```
+Not specified yet
+```
+
+### Moving to **Outreach in Progress** list
+```
+when a card with label is moved into "Outreach in Progress" list, 
+find a card named "{cardname}" on the board named "Website: {labelname}", 
+and remove "outreach : todo" label from the card, 
+and remove "outreach : done" label from the card, 
+and add "outreach : in progress" label
+```
+
+### Moving to **Completed Campaign**
+```
+when a card with label is moved into "Completed Campaign" list,
+find a card named "{cardname}" on the board named "Website: {labelname}",
+and remove "outreach : todo" label from the card,
+and remove "outreach : in progress" label from the card,
+and add "outreach : done" label,
+and move the card into list "Done"
 ```
